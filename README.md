@@ -118,12 +118,12 @@ Paramters:
 ```
 
 # Loading Audio Files
-```
-To load audio, select the folder where the audio is stored by selecting "File > Select Audio Folder".
 
-If the folder is successfully loaded, the audio files will appear in the "Audio Files" drop down menu.
+- To load audio, select the folder where the audio is stored by selecting "File > Select Audio Folder".
 
-DeepSqueak is capable of reading WAV (*.wav), .FLAC (*.flac), and Ultravox (*.UVD) audio files.
+- If the folder is successfully loaded, the audio files will appear in the "Audio Files" drop down menu.
 
-DeepSqueak was tested with a sampling frequency of 250 kHz; however, the spectrograms are created using fft windows of constant duration, rather than constant sample numbers, so other sample rates are accepted.
-```
+- DeepSqueak is capable of reading WAV (\*.wav), .FLAC (\*.flac), and Ultravox (\*.UVD) audio files.
+
+- DeepSqueak was tested with a sampling frequency of 250 kHz; however, the spectrograms are created using fft windows of constant duration, rather than constant sample numbers, so other sample rates are accepted.
+
