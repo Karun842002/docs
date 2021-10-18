@@ -80,8 +80,8 @@ A : 1. Launch the MATLAB Installer
  
 **8\. Quick Access Settings**
 
-  - [Focus] Change focus window (11) scale
-  - [Page] Change page window (10) scale
+  - [Focus] Change focus window (Labelled 11 in the figure) scale
+  - [Page] Change page window (Labelled 10 in the figure) scale
   - [Scale] Change spectrogram display settings
   - [Colormap] Change colormap, invert colormap, adjust brightness/contrast
 
@@ -93,7 +93,7 @@ A : 1. Launch the MATLAB Installer
 **10\. Page Window**
 
   - View a large chuck of the audio file for better context
-  - Click anywhere to move focus window (11)
+  - Click anywhere to move focus window (Labelled 11 in the figure)
 
 **11\. Focus Window**
 
@@ -103,3 +103,27 @@ A : 1. Launch the MATLAB Installer
   - Add new call boxes
 
 
+# Recording Audio Files
+```
+1. Click "Record Audio" (Refer Main Window(5))
+```
+![Recording Menu](https://i.imgur.com/Ma0ImG7.png)
+```
+Paramters:
+    Recording length: 
+    Sample rate:
+    Display time:
+    Filename:
+ - The recorded audio file is saved in the ****
+```
+
+# Loading Audio Files
+```
+To load audio, select the folder where the audio is stored by selecting "File > Select Audio Folder".
+
+If the folder is successfully loaded, the audio files will appear in the "Audio Files" drop down menu.
+
+DeepSqueak is capable of reading WAV (*.wav), .FLAC (*.flac), and Ultravox (*.UVD) audio files.
+
+DeepSqueak was tested with a sampling frequency of 250 kHz; however, the spectrograms are created using fft windows of constant duration, rather than constant sample numbers, so other sample rates are accepted.
+```
