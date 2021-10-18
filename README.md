@@ -37,5 +37,69 @@ A : 1. Launch the MATLAB Installer
 ```
 
 # Main Window
+![Main Window](https://i.imgur.com/6KMLQiD.png)
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+**1\. Main Menus**
+
+  - File: Working Folder Selection, Session Save, & Import/Export 
+
+**2\. Call Statistics**
+
+  - See [Export to Excel](export-to-excel)
+
+**3\. Waveform and Extracted Contour**
+
+  - Call [<span class="underline">contour</span>](contour-detection),
+    slope line.
+  - Contour extraction is now handled automatically
+  - Contour extraction thresholds are still editable in Tools menu 
+
+**4\. Working Folder Dropdowns**
+
+  - Selected items will used when detect and load buttons are called
+
+**5\. Detect, Load, and Record Buttons**
+
+  - [Detect Calls] Load selected neural network and audio file
+  - [Load Calls] Load selected detected call file
+  - [Load Audio] Load selected audio file without any detections
+
+**6\. Detection Review Buttons**
+
+  - Keyboard shortcuts in parentheses
+  - Drag box corners to adjust 
+  - Right click to delete box
+  - Double click for custom labels
+  - Custom label keyboard shortcuts can be defined in "Tools "
+
+**7\. Navigation Buttons**
+
+  - [>] Move one call
+  - [>>] Move one focus window
+  - [>>>] Move one page window
+ 
+**8\. Quick Access Settings**
+
+  - [Focus] Change focus window (11) scale
+  - [Page] Change page window (10) scale
+  - [Scale] Change spectrogram display settings
+  - [Colormap] Change colormap, invert colormap, adjust brightness/contrast
+
+**9\. Complete Audio File Timeline**
+
+  - Green curve represents detected call density
+  - Click anywhere to jump locations in the file
+
+**10\. Page Window**
+
+  - View a large chuck of the audio file for better context
+  - Click anywhere to move focus window (11)
+
+**11\. Focus Window**
+
+  - Adjust call boxes
+  - Delete call boxes
+  - Reject call boxes
+  - Add new call boxes
+
+
