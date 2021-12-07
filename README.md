@@ -127,3 +127,174 @@ Paramters:
 
 - DeepSqueak was tested with a sampling frequency of 250 kHz; however, the spectrograms are created using fft windows of constant duration, rather than constant sample numbers, so other sample rates are accepted.
 
+# Training a detection network:
+
+In order to detect the USVs from the sonogram we would need a trained detection network. 
+
+Training a detection network can be done by feeding images with principles of image processing and spatial analysis.
+
+## Creating images to train detection network:
+
+- Click  the tools icon in the task bar 
+- Choose "Network Training" in the drop down menu
+- Choose "create detection network training images"
+- Choose a pre-detected file for your network to use for training. 
+- Output window is displayed
+- Generated images are saved under the images folder
+
+![Imgur](https://i.imgur.com/hXQGoEL.png)
+
+Window description:
+
+Window length
+
+Overlap****************************
+
+Nfft
+
+Image length
+
+Number of augmented duplicates
+
+## Using images to train:
+
+- Tools>network training>training detection network>choose images>save detection network in a folder.
+
+## Detection of audio file:
+
+Click the drop down menu for files in the task bar >select the network folder containing the required detection network>select audio folder containing the audio to be detected
+
+In the left bottom :
+##### image
+Choose the respective network and audio files by clicking on the icons.
+
+##### multiload
+Window description:
+********
+
+ok>window showing number of  cell fragments and speed of detection
+The detected file is saved in the folder that was earlier selected in step **** under “detection folder”.
+
+## Loading and viewing the detected call:
+Click the detected call file icon in the bottom left and select the preferred call to load. 
+Click load call
+You can see the sonogram with the detected syllables .
+This version of deepsqueek is inbuilt with a denoising network and thus automatically rejects noise.This can be done manually too
+
+## Manual selection:
+
+Calls can be heard using the play call option.Calls can be accepted or rejected  . Unrecognised USVs can be recognised by using the draw option .
+#image
+The bar can be used to navigate around the entire call with respect to time.
+
+
+# Classification:
+DeepSqueak classifies the detected USV syllables to around 20-25 clusters . 
+
+Unsupervised clustering is done without the input of labelled calls. The calls are  clustered as the software segregates USV types by analysing a detection file containing unsegregated detected USVs. 
+Supervised classification requires a classifier network trained with *********. For  the training process , labelled USVs are required to train an efficient network.
+This is done by using either supervised classifier or unsupervised clustering.
+
+## Unsupervised Clustering:
+
+Tools (task bar)>Call Classification>Unsupervised Clustering>clustering method
+
+Window description:
+
+K-Means:
+
+Variational Auto-encoder:
+
+ARTwarp:
+
+Choose the clustering method. ARTwarp & Variational Auto Encoders are still experimental, so k-means is currently recommended
+
+
+### Selecting K-Means:
+Tools (task bar)>Call Classification>Unsupervised Clustering>clustering method>K-Means :
+Here , one can choose to use previously existing models  to classify . (“Default is no”)
+
+### By Choosing  pre existing clustering network:
+Tools (task bar)>Call Classification>Unsupervised Clustering>clustering method>K-Means>clustering from existing model>yes>choose ******** file> choose the detection file that needs to be classified> The extracted contours can be saved .
+
+  
+### By building a customised  clustering network
+Tools (task bar)>Call Classification>Unsupervised Clustering>clustering method>K-Means>clustering from existing model>no> choose detection or extracted file>save extracted contours if needed>window for choosing cluster parameters>
+
+Window description:
+Shape weight:
+Frequency weight:
+Duration weight:
+ 
+Enter the weights (relative importance) of each of the three dimensions. 
+
+Tools (task bar)>Call Classification>Unsupervised Clustering>clustering method>K-Means>clustering from existing model>no> choose detection or extracted file>save extracted contours if needed>window for choosing cluster parameters> window for cluster optimisation method( elbow optimised or user-defined)
+
+
+
+### Elbow optimised:
+Elbow optimization will cluster the data sequentially from 1 to max cluster and calculate the within cluster error. At the end of this procedure it will look for the elbow of the error curve and decide on an optimal number of clusters for the users data set.
+On  selecting “elbow optimised”,the following window for cluster optimisation appears
+
+
+Enter the maximum number of cluster to test (Default = 100)
+Once clustering finishes, you will be prompted to save the model. This is optional.
+You will be able to see a graph showing “normalised error” vs “number of clusters” and the cut-off or elbow location will thus be determined. 
+example:
+
+A new interface will appear, showing the clusters. This interface can also be found under "Tools > Call Classification > View Clusters"
+
+### User Defined:
+Tools (task bar)>Call Classification>Unsupervised Clustering>clustering method>K-Means>clustering from existing model>no> choose detection or extracted file>save extracted contours if needed>window for choosing cluster parameters> window for cluster optimisation method( elbow optimised or user-defined)>user defined>window for choosing number for k means(default:15)>
+
+
+K-means number:*******************
+A new interface will appear, showing the clusters. This interface can also be found under "Tools > Call Classification > View Clusters"
+
+### Viewing clusters:
+Name the clusters by entering a name in the text box. Clusters with the same name will be merged upon saving.
+
+View different clusters with the "Next" and "Back" buttons.
+
+View more calls within a cluster with the "Next Page" and "Previous Page" buttons.
+
+Reject calls by clicking on them. Calls highlighted in red will be rejected upon saving.
+
+Update the call files by clicking "Save", or redo the clustering with "Redo"
+
+
+VAE
+ARTwarp:
+
+
+
+
+Supervised classification:
+Uses a trained network to classify and name the detected USV calls
+This network operates on the spectrogram, rather than the contour.
+ 
+
+Training a supervised classifier:
+The supervised classifier requires a detection file with labels.
+Tools>network training> train supervised classifier>select detection file>
+A window showing the training process is now displayed. There are two main graphs shown :accuracy vc iteration and loss vs iteration. This process  can be terminated at any point by clicking the stop button on the top right corner.
+
+Once the training process is complete , the trained network can be saved and a confusion matrix is displayed.******************
+
+
+## Classification using a network:
+tools>call classification>supervised classification>select the preferred network> choose the detection file that needs classification
+You can save the output label either by updating the detection file or in another file. The detection file can be viewed in MATLAB or exported to Excel (See Export to Excel).
+
+# Syntax analysis:
+
+Click "Tools > Call Classification > Syntax Analysis"
+
+In the dialog box, select the files you wish to use. You may choose either detection files(*.mat), or the exported call statistics files (.xlsx)
+
+A dialog box will appear. Enter the maximum call separation, in seconds, to define a bout, and a threshold for excluding uncommon call categories.
+
+After the files are loaded, a transition matrix, and syntax graph will appear.
+
+
+A dialog box will appear, giving the option to save the transition matrix and syllable counts as an Excel table.
